@@ -7,7 +7,7 @@ include '/headers/login-header.php';
 <div class="clearfix"></div>
 <div class="wrapper-page">
     <div class="text-center">
-        <a href="<?php echo base_url(); ?>/User/register" class="logo"><span>Result Analyser</span></a>
+        <a href="<?php echo base_url(); ?>index.php/user/register" class="logo"><span>Result Analyser</span></a>
         <h5 class="text-muted m-t-0 font-600">User Registration</h5>
     </div>
     <div class="m-t-40 card-box">
@@ -20,13 +20,13 @@ include '/headers/login-header.php';
         if (!empty($error)) {
             ?>
             <div class="alert alert-danger">
-                <strong>Warning!</strong> <?php echo $error?>
+                <strong>Warning!</strong> <?php echo $error ?>
             </div>
             <?php
         }
         ?>
         <div class="panel-body">
-            <form class="form-horizontal m-t-20" action="<?php echo base_url(); ?>index.php/User/register"
+            <form class="form-horizontal m-t-20" action="<?php echo base_url(); ?>index.php/user/register"
                   data-parsley-validate
                   novalidate method="post">
 
@@ -42,27 +42,27 @@ include '/headers/login-header.php';
                 </div>
                 <div class="form-group ">
                     <label for="userName">Name of the Institution*</label>
-                    <select class="form-control select2" name="institution_id" required="">
+                    <select class="form-control select2" name="institution_id" required="" id="institution_id">
                         <option>Select Institution</option>
                         <?php
                         if (isset($instdata)) {
-                        foreach ($instdata
-
-                        as $value) {
-                        foreach ($value
-
-                        as $key => $val) {
-                        ?>
+                        foreach ($instdata as $value) {
+                        foreach ($value as $key => $val) { ?>
                         <optgroup label="<?php echo $key ?>">
                             <?php
-                            foreach ($val as $option) {
-                                ?>
+                            foreach ($val as $option) { ?>
                                 <option value="<?php echo $option['id'] ?>"><?php echo $option['name'] ?></option>
                                 <?php
+                                }
                             }
-                            }
-                            }
-                            } ?>
+                        }
+                    } ?>
+                    </select>
+                </div>
+                <div class="form-group ">
+                    <label for="userName">Department*</label>
+                    <select class="form-control select2" name="department_id" required="" id="department_id">
+
                     </select>
                 </div>
 
@@ -100,7 +100,7 @@ include '/headers/login-header.php';
 
     <div class="row">
         <div class="col-sm-12 text-center">
-            <p class="text-muted">Already have account?<a href="page-login.html" class="text-primary m-l-5"><b>Sign
+            <p class="text-muted">Already have account?<a href="login" class="text-primary m-l-5"><b>Sign
                         In</b></a></p>
         </div>
     </div>
